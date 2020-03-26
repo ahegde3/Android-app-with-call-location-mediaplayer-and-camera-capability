@@ -7,8 +7,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v4.app.ActivityCompat;
+//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.net.URI;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnCapture,loc,call,media;
@@ -30,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
         imgCapture = (ImageView) findViewById(R.id.capturedImage);
         media=(Button)findViewById(R.id.mediaplayer);
         call=(Button)findViewById(R.id.call);
+        loc=(Button)findViewById(R.id.location);
+        loc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent lc=new Intent(getApplicationContext(),LocationAct.class);
+                startActivity(lc);
+            }
+        });
         btnCapture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent cn=new Intent(getApplicationContext(),Mediaplayer.class);
-                startActivity(cn);
             }
         });
     }
